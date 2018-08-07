@@ -1,36 +1,53 @@
-/*$('.carousel').carousel({
-    interval: 8000,
-    pause:true,
-    wrap:false
-});*/
+var xhr = new XMLHttpRequest();
 
+window.onload = ()=>{
+    var btnSignUp = document.getElementById("btnSignUp");
+    btnSignUp.addEventListener("click",enviarDatos);
+}
 
+function enviarDatos(){
+    var firstName = document.getElementById("txtFirstName").value;
+    var lastName = document.getElementById("txtLastName").value;
+    var email = document.getElementById("txtEmail").value;
+    var passwordUser = document.getElementById("txtPassword").value;
+    var passwordUser2 = document.getElementById("txtPassword2").value;
+    var birthday = document.getElementById("txtBirthday").value;
+    var sex = document.getElementsByName("chkSex");
+    if(sex[0].checked == true){
+        sex = sex[0].value;
+    }
+    else{
+        sex = sex[1].value;
+    }
 
-/*$('#myCarousel').carousel();
+    if(passwordUser == passwordUser2){
+        var miForma = new FormData();
+        miForma.append("firstName",firstName);
+        miForma.append("lastName",lastName);
+        miForma.append("email",email);
+        miForma.append("password",passwordUser);
+        miForma.append("birthday",birthday);
+        miForma.append("sex",sex);
 
-// Go to the previous item
-$("#prevBtn").click(function(){
-    $("#myCarousel").carousel("prev");
-});
-// Go to the previous item
-$("#nextBtn").click(function(){
-    $("#myCarousel").carousel("next");
-});
+        xhr.open("POST","SignUpServlet",true);
 
-// Activate Carousel
-$("#myCarousel").carousel();
+        xhr.onload = callback;
 
-// Enable Carousel Indicators
-$(".item").click(function(){
-    $("#myCarousel").carousel(1);
-});
+        xhr.send(miForma);
+    }
+    else{
+        alert("Las contraseñas no coinciden");
+    }
+    /*
+    console.log(firstName);
+    console.log(lastName);
+    console.log(email);
+    console.log(passwordUser);
+    console.log(passwordUser2);
+    console.log(birthday);
+    console.log(sex);*/
+}
 
-// Enable Carousel Controls
-$(".left").click(function(){
-    $("#myCarousel").carousel("prev");
-});
-// Enable Carousel Controls
-$(".right").click(function(){
-    $("#myCarousel").carousel("next");
-});
-*/
+function callback(){
+    document.getElementById("resultado").innerHTML = xhr.responseText;
+}

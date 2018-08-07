@@ -1,5 +1,78 @@
 @charset "ISO-8859-1";
 
+body{
+    background-color: gainsboro;
+}
 
+#divUser{
+    margin-top: 80px;
+    /*margin-left: 30px;
+    margin-right: 30px;*/
+}
 
+#divPhoto{
+    width: 160px;
+    height: 160px;
+    text-align: center;
+    margin: auto;
+}
 
+#divName{
+    text-align: center;
+    margin: auto;
+}
+
+#secondPart{
+    margin: auto;
+}
+
+#calificacionUser{
+    text-decoration-style: solid;
+}
+
+#clasificacionStartUser {
+    width: 250px;
+    margin: 0 auto;
+    height: 50px;
+}
+  
+#clasificacionStartUser p {
+    text-align: center;
+}
+  
+#clasificacionStartUser label {
+    font-size: 20px;
+}
+  
+input[type="radio"] {
+    display: none;
+}
+  
+label{
+    color: grey;
+}
+  
+.clasificacion {
+    direction: rtl;
+    unicode-bidi: bidi-override;
+}
+  
+.clasificacion label:hover,
+.clasificacion label:hover ~ label {
+    color: orange;
+}
+  
+.clasificacion input[type="radio"]:checked ~ label {
+    color: orange;
+}
+
+#logout{
+    background-color: transparent;
+    border: transparent;
+}
+
+#divLocationMap{
+    height: 400px;
+    width: 100%;
+    margin: auto;
+}
