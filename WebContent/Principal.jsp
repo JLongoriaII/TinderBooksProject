@@ -8,7 +8,7 @@
 <link rel="stylesheet" href="css/fontawesome.min.css">
 <link rel="stylesheet" href="css/stylePrincipal.css">
 <title>TinderBooks</title>
-</head>
+</head> 
 <body>
 <header>
     <div id="navbar-principal">
