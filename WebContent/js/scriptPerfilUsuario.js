@@ -1,4 +1,5 @@
 var xhr = new XMLHttpRequest();
+var xhr2 = new XMLHttpRequest();
 
 window.onload = ()=>{
     var btnActualizarInformacion = document.getElementById("btnInformacion");
@@ -80,5 +81,9 @@ function callback(){
 }
 
 function recogerInformacion(){
+	  xhr2.open("POST","ActualizarInformacionServlet",true);
 
+	  xhr2.onload = callback;
+
+	  xhr2.send();
 }

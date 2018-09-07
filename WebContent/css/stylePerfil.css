@@ -1,5 +1,4 @@
-@charset "ISO-8859-1";
-
+@charset "UTF-8";
 body{
     background-color: gainsboro;
 }
@@ -86,3 +85,10 @@ label{
     width: 100%;
     margin: auto;
 }
+
+#idBodyInfo{
+    background-color: gainsboro;
+}
+
+
+

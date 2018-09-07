@@ -20,12 +20,16 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.tinderbooksproject.model.InformacionUsuarios;
+import com.tinderbooksproject.model.SignUp;
+
 @WebServlet("/SignUpServlet")
 @MultipartConfig
 public class SignUpServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		//Recuadación de datos que envia el JS
 		String sFirstName = request.getParameter("firstName");
 		String sLastName = request.getParameter("lastName");
 		String sEmail = request.getParameter("email");
@@ -41,6 +45,23 @@ public class SignUpServlet extends HttpServlet {
 		}
 		String sFechaFinal = objSimpleDateFormat.format(sFechaNacimiento);
 		
+		//Objeto SignUp para el POJO
+		SignUp objSignUp = new SignUp();
+		objSignUp.setEmail(sEmail);
+		objSignUp.setFirstName(sFirstName);
+		objSignUp.setLastName(sLastName);
+		objSignUp.setPassword(sPassword);
+		objSignUp.setBirthDate(sFechaFinal);
+		objSignUp.setGender(sSex);
+		
+		InformacionUsuarios objInfo = new InformacionUsuarios();
+		objInfo.setDescripcion("");
+		objInfo.setEdad("");
+		objInfo.setNacionalidad("");
+		objInfo.setCiudad("");
+		objInfo.setAcademica("");
+		
+		//Crea el objeto Properties, y llama al archivo y adquiere sus attributos
 		PrintWriter salida = response.getWriter();
 		Properties props = new Properties();
 		String propsFile = "config.properties";
@@ -53,6 +74,7 @@ public class SignUpServlet extends HttpServlet {
 		String user = props.getProperty("user");
 		String password = props.getProperty("password");
 		
+		//Crea los objetos para la conexion de la base de datos.
 		Connection conn = null;
 		Statement stmt = null;
 		ResultSet rs = null;
@@ -60,16 +82,18 @@ public class SignUpServlet extends HttpServlet {
 			Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
 			conn = DriverManager.getConnection(url, user, password);
 			stmt = conn.createStatement();
-			rs = stmt.executeQuery("SELECT * FROM UsuariosTinderBooks WHERE uEmail = '"+ sEmail +"'");
+			rs = stmt.executeQuery("SELECT * FROM UsuariosTinderBooks WHERE uEmail = '"+ objSignUp.getEmail() +"'");
 			
 			if(rs.next()) {
 				salida.println("Esta cuenta ya esta registrada");
 			}else {
 				stmt.executeUpdate("INSERT INTO UsuariosTinderBooks(uEmail, uPassword, uFirstName,"
-						+ " uLastName, uBirthDate, uGender) VALUES('"+sEmail+"','"+sPassword+"',"
-						+ "'"+sFirstName+"','"+sLastName+"','"+sFechaFinal+"','"+sSex+"')");
+						+ " uLastName, uBirthDate, uGender, uDescription, uAge, uNationality, uCity, uAcademic) VALUES('"+objSignUp.getEmail()+"','"+objSignUp.getPassword()+
+						"','"+objSignUp.getFirstName()+"','"+objSignUp.getLastName()+"','"+objSignUp.getBirthDate()+"','"+objSignUp.getGender()+
+						"','"+objInfo.getDescripcion()+"','"+objInfo.getEdad()+"','"+objInfo.getNacionalidad()+
+						"','"+objInfo.getCiudad()+"','"+objInfo.getAcademica()+"')");
 				
-				request.getRequestDispatcher("/Principal").forward(request, response);;
+				request.getRequestDispatcher("/Principal").forward(request, response);
 			}
 			
 		}catch(Exception e) {

@@ -1,12 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <link rel="stylesheet" href="css/bootstrap.min.css">
 <link rel="stylesheet" href="css/fontawesome.min.css">
-<link rel="stylesheet" href="css/stylesheet.css">
+<link rel="stylesheet" href="css/stylePerfil.css">
 <title>TinderBooks</title>
 </head>
 <body>
@@ -17,12 +17,22 @@
         </button>				
         <div class="collapse navbar-collapse" id="navbarResponsive"> <!-- Hace la extencion del boton-->
             <ul class="navbar-nav ml-auto">
-                <li class="nav-item ">
+                <!--<li class="nav-item ">
                     <a class="nav-link" href="Usuarios.jsp">Usuarios</a>
-                </li>
-                <li class="nav-item">
+                </li>-->
+                <form action="UsuariosServlet" method="post">
+                    <li class="nav-item">
+                        <input type="submit" id="btnUsuarios" class="nav-link" value="Usuarios">
+                    </li>
+                </form>
+                <!--<li class="nav-item">
                     <a class="nav-link" href="PerfilUsuario.jsp">Perfil</a>
-                </li>
+                </li>-->
+                <form action="PerfilUsuarioServlet" method="post">
+                    <li class="nav-item">
+                        <input type="submit" id="btnPerfil" class="nav-link" value="Perfil">
+                    </li>
+                </form>
                 <form action="LogoutServlet" method="post">
                     <li class="nav-item">
                         <input type="submit" id="logout" class="nav-link" value="Logout">
@@ -105,7 +115,7 @@
                                             </div>
                                           
                                             <!-- Modal body -->
-                                            <div class="modal-body">
+                                            <div class="modal-body" id="idBodyInfo">
                                                 <p>
                                                     <div>
                                                         <label for="txtDescripcion">Ingresa tu Descripción</label>
@@ -143,7 +153,7 @@
                                                 <input type="button" name="btnInformacion" id="btnInformacion" class="btn btn-outline-success" value="Guardar">
                                                 <input type="button" class="btn btn-outline-danger" data-dismiss="modal" value="Cancelar">
                                             </div>
-                                          
+                                          	
                                             </div>
                                         </div>
                                     </div>

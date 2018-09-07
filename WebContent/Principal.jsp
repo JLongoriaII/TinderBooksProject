@@ -21,10 +21,10 @@
                 <ul class="navbar-nav ml-auto">                             <!--Lo manda a la derecha :D-->
                     <form class="form-inline my-2 my-lg-0" action="LoginServlet" method="POST">
                         <li class="nav-item">
-                            <input class="form-control my-2 my-lg-0" type="email" id="txtEmailUser" name="txtEmailUser" placeholder="User or Email">
+                            <input class="form-control my-2 my-lg-0" type="email" id="txtEmailUser" name="txtEmailUser" placeholder="User or Email" required>
                         </li>
                         <li class="nav-item">
-                            <input class="form-control my-2 my-lg-0" type="password" id="txtPasswordUser" name="txtPasswordUser" placeholder="Password">
+                            <input class="form-control my-2 my-lg-0" type="password" id="txtPasswordUser" name="txtPasswordUser" placeholder="Password" required>
                         </li>
                         <li>
                             <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Login</button>

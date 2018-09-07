@@ -2,3 +2,18 @@
 body{
     background-color: gainsboro;
 }
+
+#btnUsuarios{
+    background-color: transparent;
+    border: transparent;
+}
+
+#btnPerfil{
+    background-color: transparent;
+    border: transparent;
+}
+
+#btnIndex{
+    background-color: transparent;
+    border: transparent;
+}

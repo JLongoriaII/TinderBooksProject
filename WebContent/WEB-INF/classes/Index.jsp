@@ -1,9 +1,10 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+   
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" href="css/bootstrap.min.css">
 <link rel="stylesheet" href="css/stylesheet.css">
 <title>TinderBooks</title>
@@ -12,7 +13,7 @@
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top"> <!--Le da la forma al navbar-->
 		<a class="navbar-brand" href="Index.jsp">TinderBooks</a> <!--Le da el aspecto al boton-->
 		<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-			<span class="navbar-toggler-icon"></span>                   <!--Pone el icono del toggler-->
+			<span class="navbar-toggler-icon"></span>            <!--Pone el icono del toggler-->
 		</button>				
 		<div class="collapse navbar-collapse" id="navbarResponsive"> <!-- Hace la extencion del boton-->
 			<ul class="navbar-nav ml-auto">
@@ -28,12 +29,22 @@
 						<li><a class="dropdown-item" href="#">Baby la vida es un ciclo</a></li>
 					</ul>
 				</li>
-				<li class="nav-item ">
-					<a class="nav-link" href="Usuarios.jsp">Usuarios</a>
-				</li>
-				<li class="nav-item ">
-					<a class="nav-link" href="PerfilUsuario.jsp">Perfil</a>
-				</li>
+				<!--<li class="nav-item ">
+					<a class="nav-link" href="UsuariosServlet">Usuarios</a>
+				</li>-->
+				<form action="UsuariosServlet" method="post">
+                    <li class="nav-item">
+                        <input type="submit" id="btnUsuarios" class="nav-link" value="Usuarios">
+                    </li>
+                </form>
+				<!--<li class="nav-item ">
+					<a class="nav-link" href="PerfilUsuarioServlet">Perfil</a>
+				</li>-->
+				<form action="PerfilUsuarioServlet" method="post">
+                    <li class="nav-item">
+                        <input type="submit" id="btnPerfil" class="nav-link" value="Perfil">
+                    </li>
+                </form>
 				<li>
 					<form class="form-inline my-2 my-lg-0">
 						<input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">

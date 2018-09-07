@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -17,12 +17,22 @@
         </button>				
         <div class="collapse navbar-collapse" id="navbarResponsive"> <!-- Hace la extencion del boton-->
             <ul class="navbar-nav ml-auto">
-                <li class="nav-item">
+                <!--<li class="nav-item">
                     <a class="nav-link" href="Usuarios.jsp"><span class="fa-user fa"></span> Usuarios</a>
-                </li>
-                <li class="nav-item ">
+                </li>-->
+                <form action="UsuariosServlet" method="post">
+                    <li class="nav-item">
+                        <input type="submit" id="btnUsuarios" class="nav-link" value="Usuarios">
+                    </li>
+                </form>
+                <!--<li class="nav-item ">
                     <a class="nav-link" href="PerfilUsuario.jsp">Perfil</a>
-                </li>
+                </li>-->
+                <form action="PerfilUsuarioServlet" method="post">
+                    <li class="nav-item">
+                        <input type="submit" id="btnPerfil" class="nav-link" value="Perfil">
+                    </li>
+                </form>
                 <li>
                     <form class="form-inline my-2 my-lg-0">
                         <div class="input-group">
